@@ -7,7 +7,7 @@ const ProfessionContext = React.createContext()
 
 export const useProfession = () => useContext(ProfessionContext)
 
-const ProfessionProvider = ({ children }) => {
+export const ProfessionProvider = ({ children }) => {
     const [professions, setProfession] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [error, setError] = useState(null)

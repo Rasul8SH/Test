@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
 import localStorageService, { setTokens } from "../services/localStorage.service"
@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
     const [currentUser, setUser] = useState()
     const [error, setError] = useState(null)
     const [isLoading, setLoading] = useState(true)
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (error !== null) {
@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
     function logOut() {
         localStorageService.removeAuthData()
         setUser(null)
-        history.push("/")
+        navigate("/")
     }
 
     async function updateUserData(data) {

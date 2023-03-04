@@ -3,7 +3,11 @@ import AuthProvider from "./hooks/useAuth"
 import NavBar from "./components/ui/navBar"
 import { QualityProvider } from "./hooks/useQuality"
 import { ProfessionProvider } from "./hooks/useProfession"
-import { Route, Switch, Redirect } from "react-router-dom"
+import Login from "./layouts/logIn"
+import LogOut from "./layouts/logOut"
+import Main from "./layouts/main"
+import { Route, Routes } from "react-router-dom"
+// import ProtectedRoute from "./components/common/protectedRoute"
 
 const App = () => {
     return (
@@ -13,13 +17,12 @@ const App = () => {
 
                 <QualityProvider>
                     <ProfessionProvider>
-                        <Switch>
-                            
-                            <Route path="/login/:type?" component={} />
-                            <Route path="/logout" component={} />
-                            <Route exact path="/" component={} />
-                            <Redirect to="/" />
-                        </Switch>
+                        <Routes>
+                            {/* <ProtectedRoute path="/users/:userId?:edit?" component={} /> */}
+                            <Route path="/login/:type?" element={<Login/>} />
+                            <Route path="/logout" element={<LogOut/>} />
+                            <Route path="/" element={<Main/>} />
+                        </ Routes>
                     </ProfessionProvider>
                 </QualityProvider>
             </AuthProvider>
